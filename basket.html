@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Корзина | Asaxiy</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./src/output.css" />
+  </head>
+  <body
+    class="font-[Rubik] bg-gray-50 text-gray-800 min-h-screen flex flex-col"
+  >
+    <!-- HEADER -->
+    <header class="border-b border-gray-200 shadow-sm relative z-50 bg-white">
+      <div
+        class="container mx-auto max-w-[1200px] flex flex-wrap items-center justify-between gap-2 sm:gap-3 py-3 px-2 sm:px-4"
+      >
+        <a
+          href="./index.html"
+          class="shrink-0 flex items-center gap-1 sm:gap-2 w-[120px] sm:w-auto"
+        >
+          <img
+            src="https://asaxiy.uz/custom-assets/images/logos/asaxiy-logo.svg"
+            alt="Asaxiy logo"
+            class="h-7 sm:h-9 md:h-11"
+          />
+        </a>
+        <button
+          class="bg-blue-600 text-white flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-sm hover:bg-blue-700 transition"
+        >
+          <i class="fa-solid fa-bars text-base sm:text-lg"></i>
+          <span class="hidden sm:inline">Категории</span>
+        </button>
+
+        <!-- SEARCH -->
+        <div
+          class="flex items-center border border-blue-600 rounded-md overflow-hidden grow md:grow-0 min-w-[90px] sm:min-w-[160px] md:min-w-[250px] mx-1 sm:mx-3"
+        >
+          <input
+            type="text"
+            placeholder="Поиск..."
+            class="px-2 sm:px-3 py-1.5 sm:py-2 outline-none w-full text-[11px] sm:text-sm border-0 focus:ring-0"
+          />
+          <button
+            class="bg-blue-600 text-white px-2 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-sm hover:bg-blue-700 transition"
+          >
+            Искать
+          </button>
+        </div>
+
+        <!-- ICONS -->
+        <div
+          class="flex items-center gap-1 sm:gap-3 md:gap-5 flex-wrap justify-center w-full sm:w-auto mt-2 sm:mt-0"
+        >
+          <div
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm"
+          >
+            <i class="fa-solid fa-scale-balanced text-lg sm:text-xl mb-0.5"></i>
+            <span>Сравнение</span>
+          </div>
+          <div
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm"
+          >
+            <i class="fa-regular fa-credit-card text-lg sm:text-xl mb-0.5"></i>
+            <span>Оплатить</span>
+          </div>
+          <div
+            id="cart"
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm relative"
+          >
+            <i class="fa-solid fa-cart-shopping text-lg sm:text-xl mb-0.5"></i>
+            <span
+              class="count absolute -top-1 -right-2 bg-blue-600 text-white text-[9px] px-[4px] rounded-full"
+              >0</span
+            >
+            <span>Корзина</span>
+          </div>
+          <div
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm relative"
+          >
+            <i class="fa-regular fa-heart text-lg sm:text-xl mb-0.5"></i>
+            <span
+              class="fav-count absolute -top-1 -right-2 bg-blue-600 text-white text-[9px] px-[4px] rounded-full"
+              >0</span
+            >
+            <span>Избранное</span>
+          </div>
+          <div
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm"
+          >
+            <i class="fa-solid fa-globe text-lg sm:text-xl mb-0.5"></i>
+            <span>O'zbekcha</span>
+          </div>
+          <div
+            class="flex flex-col items-center text-gray-700 hover:text-blue-600 transition text-[10px] sm:text-sm"
+          >
+            <i class="fa-regular fa-user text-lg sm:text-xl mb-0.5"></i>
+            <span>Войти</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAV -->
+      <nav
+        class="border-t border-gray-100 bg-white overflow-x-auto scrollbar-hide"
+      >
+        <ul
+          class="container mx-auto max-w-[1200px] flex flex-nowrap justify-start sm:justify-center gap-3 sm:gap-6 text-[11px] sm:text-[15px] py-2 text-gray-800 px-2 sm:px-4 whitespace-nowrap"
+        >
+          <li class="hover:text-blue-600">Супер цена</li>
+          <li class="hover:text-blue-600">0–0–6</li>
+          <li class="hover:text-blue-600">Лучшее для студентов</li>
+          <li class="hover:text-blue-600">Смартфоны</li>
+          <li class="hover:text-blue-600">Бытовая техника</li>
+          <li class="hover:text-blue-600">Книги</li>
+          <li class="hover:text-blue-600">Телевизоры</li>
+          <li class="hover:text-blue-600">Ноутбуки</li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="flex-1 flex items-center justify-center px-2 py-10 sm:py-16">
+      <div class="text-center w-full max-w-[240px] sm:max-w-md mx-auto">
+        <i
+          class="fa-solid fa-cart-shopping text-4xl sm:text-6xl text-gray-300 mb-4 sm:mb-6"
+        ></i>
+        <h1 class="text-lg sm:text-2xl font-bold mb-2">Корзина пуста</h1>
+        <p
+          class="text-gray-500 mb-4 sm:mb-6 text-[12px] sm:text-base leading-snug"
+        >
+          Hozircha mahsulotlar yo‘q. Xarid qilish uchun asosiy sahifaga qayting.
+        </p>
+        <a
+          href="index.html"
+          class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded-lg font-medium transition text-sm"
+        >
+          Bosh sahifaga qaytish
+        </a>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t mt-8 pt-10 pb-4">
+      <div class="container mx-auto max-w-[1200px] px-2 sm:px-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-8 text-left"
+        >
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2 sm:mb-3">
+              Об Asaxiy
+            </h3>
+            <ul class="space-y-1 sm:space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li><a href="#" class="hover:text-blue-600">О нас</a></li>
+              <li>
+                <a href="#" class="hover:text-blue-600">Карьера в Asaxiy</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600"
+                  >Лицензии и сертификаты</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600">Политика Asaxiy</a>
+              </li>
+              <li><a href="#" class="hover:text-blue-600">Контакты</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2 sm:mb-3">
+              Покупателям
+            </h3>
+            <ul class="space-y-1 sm:space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li>
+                <a href="#" class="hover:text-blue-600"
+                  >Часто задаваемые вопросы</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600"
+                  >Статус «El-yurt ishonчи»</a
+                >
+              </li>
+              <li><a href="#" class="hover:text-blue-600">Asaxiy Plus</a></li>
+              <li>
+                <a href="#" class="hover:text-blue-600"
+                  >Договор публичной оферты «Asaxiy Plus»</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600">Оферта для рассрочки</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600">Публичная оферта</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-blue-600"
+                  >Публичная оферта для онлайн-курсов</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2 sm:mb-3">
+              Информации
+            </h3>
+            <ul class="space-y-1 sm:space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li><a href="#" class="hover:text-blue-600">Наши бренды</a></li>
+              <li><a href="#" class="hover:text-blue-600">Новости</a></li>
+              <li><a href="#" class="hover:text-blue-600">Блог</a></li>
+              <li><a href="#" class="hover:text-blue-600">Карта сайта</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2 sm:mb-3">
+              Доставка и магазины
+            </h3>
+            <ul class="space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 sm:px-3 py-2 hover:bg-gray-200"
+                  ><i class="fa-solid fa-store text-lg"></i> Наши магазины</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 sm:px-3 py-2 hover:bg-gray-200"
+                  ><i class="fa-solid fa-map-location-dot text-lg"></i> Пункты
+                  выдачи</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 sm:px-3 py-2 hover:bg-gray-200"
+                  ><i class="fa-solid fa-truck text-lg"></i> Доставка</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2 sm:mb-3">
+              Для связи
+            </h3>
+            <ul class="space-y-1 sm:space-y-2 text-gray-600 text-xs sm:text-sm">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> <span>+998 71 200 01 05</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i> <span>info@asaxiy.uz</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-telegram"></i> <span>Telegram bot</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>улица Гавхар 124, Ташкент</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10">
+          <h3 class="font-bold text-base sm:text-xl mb-3">Виды оплаты</h3>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4"
+          >
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://asaxiy.uz/custom-assets/images/uzum.svg"
+                alt="uzum"
+                class="h-5 sm:h-6"
+              />
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://asaxiy.uz/custom-assets/images/payme.svg"
+                alt="payme"
+                class="h-5 sm:h-6"
+              />
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://asaxiy.uz/custom-assets/images/humo.svg"
+                alt="humo"
+                class="h-5 sm:h-6"
+              />
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://asaxiy.uz/custom-assets/images/uzcard.svg"
+                alt="uzcard"
+                class="h-5 sm:h-6"
+              />
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://asaxiy.uz/custom-assets/images/xazna.png"
+                alt="xazna"
+                class="h-5 sm:h-6"
+              />
+            </div>
+            <div
+              class="flex items-center justify-center bg-gray-100 rounded-lg py-2 sm:py-3"
+            >
+              <img
+                src="https://assets.asaxiy.uz/uploads/payments/click-2-new.png"
+                alt="click"
+                class="h-5 sm:h-6"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <div>
+            <h3 class="font-bold text-base sm:text-xl mb-2">Мы в соц. сетях</h3>
+            <div class="flex gap-2 sm:gap-4 text-xl sm:text-2xl text-gray-600">
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fa-brands fa-telegram"></i
+              ></a>
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fa-solid fa-rss"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-8 border-t pt-4 text-center text-gray-500 text-xs sm:text-sm"
+        >
+          2015 – 2025 Интернет-магазин asaxiy.uz: Бытовая техника и др. Доставка
+          товаров осуществляется во все регионы. Все права защищены.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
